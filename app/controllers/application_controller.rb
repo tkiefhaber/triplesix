@@ -13,14 +13,16 @@ class ApplicationController < ActionController::Base
       :username, 
       :email, 
       :password, 
-      :password_confirmation) 
+      :password_confirmation,
+      :timezone) 
     }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(
       :username, 
       :email, 
       :password, 
       :password_confirmation,
-      :current_password
+      :current_password,
+      :timezone
       ) 
     }
   end
