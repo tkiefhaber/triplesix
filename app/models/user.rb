@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :punches
+
+
   # Use friendly_id on Users
   extend FriendlyId
   friendly_id :friendify, use: :slugged
@@ -53,5 +56,17 @@ class User < ActiveRecord::Base
   
   def self.users_count
     where("admin = ? AND locked = ?",false,false).count
+  end
+
+  def drinks
+    punches.drinks
+  end
+
+  def drinks_on(date)
+    punches.drinks_on(date, timezone)
+  end
+
+  def drinks_this_week
+    punches.drinks_this_week(Date.today, timezone)
   end
 end
