@@ -35,16 +35,36 @@
 
   var oneSixth = 0.166
   var offset          = 1 - <%= @presenter.drinks_today_percentage_to_goal %>
-  var glassCount      = <%= @presenter.drinks_today_count %>
-  var glassPercentage = <%= @presenter.drinks_today_percentage_to_goal %>
+  var glassCount      =     <%= @presenter.drinks_today_count              %>
+  var glassPercentage =     <%= @presenter.drinks_today_percentage_to_goal %>
 
   function fillGlass() {
     offset          -= oneSixth;
     glassPercentage += oneSixth
     glassCount      += 1;
-    var timeString  = grabTimeString();
 
-    updateDrinkElements(offset, glassCount, glassPercentage, timeString);
+    postDrink(offset, glassCount, glassPercentage);
+  };
+
+  function postDrink(offset, glassCount, glassPercentage) {
+    var user_id = <%= @user.id %>
+    $.ajax({
+      url: "/punches",
+      type: "POST",
+      data: { punch: {
+        punch_type: "water",
+        user_id: user_id
+      },
+      success: updateDrinkElements(offset, glassCount, glassPercentage)
+    }
+    });
+  };
+
+  function updateDrinkElements(offset, glassCount, glassPercentage, timeString) {
+    $('#moving-line').attr('offset', offset);
+    $('#count').text(glassCount);
+    $('#percentage').text(Math.round(glassPercentage * 100) + "%");
+    $('#time').text(grabTimeString());
   };
 
   function grabTimeString() {
@@ -52,16 +72,11 @@
     var datePieces = time.split(' ');
     var timePieces = datePieces[4].split(':');
     var hour       = parseInt(timePieces[0]) <= 12 ? timePieces[0] : parseInt(timePieces[0]) - 12;
+    var hour       = hour == 0 ? 12 : hour;
     var suffix     = parseInt(timePieces[0]) <= 12 ? ' AM' : ' PM';
     var timeString = datePieces[1] + ' ' + datePieces[2] + ', ' + hour + ":" + timePieces[1] + suffix;
 
     return timeString;
   };
 
-  function updateDrinkElements(offset, glassCount, glassPercentage, timeString) {
-    $('#moving-line').attr('offset', offset);
-    $('#count').text(glassCount);
-    $('#percentage').text(Math.round(glassPercentage * 100) + "%");
-    $('#time').text(timeString);
-  };
 </script>

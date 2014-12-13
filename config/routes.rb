@@ -5,6 +5,7 @@ Triplesix::Application.routes.draw do
 
 
   devise_for :users
+  resources :punches
 
   namespace :admin do
     root "base#index"

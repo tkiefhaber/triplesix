@@ -7,4 +7,5 @@ class UsersController < ApplicationController
       @presenter = UserPresenter.new(@user)
     end
   end
+
 end
