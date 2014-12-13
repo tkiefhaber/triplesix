@@ -27,9 +27,9 @@
     <th>Last Sign In</th>
     <th>Last Sign In IP</th>
   </tr>
-  
+
   <% @users.each do |user| %>
-  
+
   <tr>
     <td><%= user.id %></td>
     <td><%= link_to user.username.capitalize, admin_user_path(user) %></td>
@@ -45,9 +45,9 @@
     <% end %>
     <td><%= user.last_sign_in_ip %></td>
   </tr>
-  
+
   <% end %>
-  
+
 </table>
 
 <div class="text-center">
