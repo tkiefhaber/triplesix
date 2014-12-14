@@ -38,11 +38,11 @@
         </cc:Work>
       </rdf:RDF>
     </metadata>
-    <path class='tomato' id='stem' d="M24.7,5.65c-2.7,2.23-3.2,5.65-2.2,10.8" fill="none" stroke="#080" opacity="0.1" stroke-width="2.5"/>
-    <path class='tomato' id='tomato' d="m41.6,16.9c6.71,7.89,3.30,18.5-2.42,23.6-5.73,5.11-16.2,6.50-26.6,1.84-10.4-4.7-13.1-21.3-3.65-27,9.45-5.68,26-6.29,32.6,1.6z" fill="#F00" opacity="0.1"/>
-    <path class='tomato' id='shine' d="m15.6,15.3c0.683,1.19-1.88,1.16-4.97,4.10-2.95,2.8-2.64,6.7-4.14,6.5-1.50-0.2,0.72-7,2.67-8.5,1.95-1.56,5.80-3.27,6.48-2.08z" fill="#FFF" opacity="0.1"/>
+    <path class='tomato' id='stem' d="M24.7,5.65c-2.7,2.23-3.2,5.65-2.2,10.8" fill="none" stroke="#080" opacity="<%= @presenter.veggies_today_percentage_to_goal %>" stroke-width="2.5"/>
+    <path class='tomato' id='tomato' d="m41.6,16.9c6.71,7.89,3.30,18.5-2.42,23.6-5.73,5.11-16.2,6.50-26.6,1.84-10.4-4.7-13.1-21.3-3.65-27,9.45-5.68,26-6.29,32.6,1.6z" fill="#F00" opacity="<%= @presenter.veggies_today_percentage_to_goal %>"/>
+    <path class='tomato' id='shine' d="m15.6,15.3c0.683,1.19-1.88,1.16-4.97,4.10-2.95,2.8-2.64,6.7-4.14,6.5-1.50-0.2,0.72-7,2.67-8.5,1.95-1.56,5.80-3.27,6.48-2.08z" fill="#FFF" opacity="<%= @presenter.veggies_today_percentage_to_goal %>"/>
   </svg>
-  <div id='veggie-info'>
+  <div id='veggie-info' style="margin-top: -12px">
     <h2 id='veggie-count' style="margin-left: 75px"><%= @presenter.veggies_today_count %></h2>
     <h3 id='veggie-percentage' style="margin-left: 75px"><%= number_to_percentage(@presenter.veggies_today_percentage_to_goal * 100, precision: 0) %></h3>
     <h3 id='veggie-time' style="margin-left: 75px"><%= @presenter.most_recent_veggie_time %></h3>
@@ -60,10 +60,10 @@
   });
 
   var oneSixth = 0.166
-  var glassoffset      = 1 - <%= @presenter.drinks_today_percentage_to_goal %>
+  var glassOffset      = 1 - <%= @presenter.drinks_today_percentage_to_goal %>
   var glassCount       =     <%= @presenter.drinks_today_count              %>
   var glassPercentage  =     <%= @presenter.drinks_today_percentage_to_goal %>
-  var veggieOffset     = 1 - <%= @presenter.veggies_today_percentage_to_goal %>
+  var veggieOffset     =     <%= @presenter.veggies_today_percentage_to_goal %>
   var veggieCount      =     <%= @presenter.veggies_today_count              %>
   var veggiePercentage =     <%= @presenter.veggies_today_percentage_to_goal %>
 
