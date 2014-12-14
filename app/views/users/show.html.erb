@@ -21,8 +21,8 @@
   </svg>
   <div id='drink-info'>
     <h2 id='drink-count' style="margin-left: 5%; float:left"><%= @presenter.drinks_today_count %></h2>
-    <h3 id='drink-percentage' style="margin-left: 5%; float:left"><%= number_to_percentage(@presenter.drinks_today_percentage_to_goal * 100, precision: 0) %></h3>
-    <h3 id='drink-time' style="margin-left: 5%; float:left"><%= @presenter.most_recent_drink_time %></h3>
+    <h3 id='drink-percentage' style="margin-left: 2%; float:left"><%= number_to_percentage(@presenter.drinks_today_percentage_to_goal * 100, precision: 0) %></h3>
+    <h3 id='drink-time' style="margin-left: 2%; float:left"><%= @presenter.most_recent_drink_time %></h3>
   </div>
 </div>
 
@@ -46,8 +46,8 @@
   </svg>
   <div id='veggie-info'>
     <h2 id='veggie-count' style="margin-left: 5%; float:left"><%= @presenter.veggies_today_count %></h2>
-    <h3 id='veggie-percentage' style="margin-left: 5%; float:left"><%= number_to_percentage(@presenter.veggies_today_percentage_to_goal * 100, precision: 0) %></h3>
-    <h3 id='veggie-time' style="margin-left: 5%; float:left"><%= @presenter.most_recent_veggie_time %></h3>
+    <h3 id='veggie-percentage' style="margin-left: 2%; float:left"><%= number_to_percentage(@presenter.veggies_today_percentage_to_goal * 100, precision: 0) %></h3>
+    <h3 id='veggie-time' style="margin-left: 2%; float:left"><%= @presenter.most_recent_veggie_time %></h3>
   </div>
 </div>
 
@@ -101,8 +101,8 @@
 
   <div id='sweat-info' style="margin-top: -12px">
     <h2 id='sweat-count' style="margin-left: 5%; float:left"><%= @presenter.sweats_this_week_count %></h2>
-    <h3 id='sweat-percentage' style="margin-left: 5%; float:left"><%= number_to_percentage(@presenter.sweats_this_week_percentage_to_goal * 100, precision: 0) %></h3>
-    <h3 id='sweat-time' style="margin-left: 5%; float:left"><%= @presenter.most_recent_sweat_time %></h3>
+    <h3 id='sweat-percentage' style="margin-left: 2%; float:left"><%= number_to_percentage(@presenter.sweats_this_week_percentage_to_goal * 100, precision: 0) %></h3>
+    <h3 id='sweat-time' style="margin-left: 2%; float:left"><%= @presenter.most_recent_sweat_time %></h3>
   </div>
 </div>
 
