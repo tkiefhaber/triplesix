@@ -29,6 +29,18 @@ class UserPresenter
     Time.use_zone(user.timezone) { most_recent_veggie.created_at.strftime("%b %e, %l:%M %p")} if most_recent_veggie.present?
   end
 
+  def sweats_this_week_count
+    sweats_this_week.count
+  end
+
+  def sweats_this_week_percentage_to_goal
+    sweats_this_week_count / BigDecimal.new(6)
+  end
+
+  def most_recent_sweat_time
+    Time.use_zone(user.timezone) { most_recent_sweat.created_at.strftime("%b %e, %l:%M %p")} if most_recent_veggie.present?
+  end
+
   private
     def drinks_today
       @drinks_today ||= @user.drinks_on(Date.today)
@@ -52,6 +64,18 @@ class UserPresenter
 
     def most_recent_veggie
       @most_recent_veggie ||= veggies_this_week.order('created_at DESC').first
+    end
+
+    def sweats_today
+      @sweats_today ||= @user.sweats_on(Date.today)
+    end
+
+    def sweats_this_week
+      @sweats_this_week ||= @user.sweats_this_week
+    end
+
+    def most_recent_sweat
+      @most_recent_sweat ||= sweats_this_week.order('created_at DESC').first
     end
 
 end
