@@ -69,4 +69,16 @@ class User < ActiveRecord::Base
   def drinks_this_week
     punches.drinks_this_week(Date.today, timezone)
   end
+
+  def veggies
+    punches.veggies
+  end
+
+  def veggies_on(date)
+    punches.veggies_on(date, timezone)
+  end
+
+  def veggies_this_week
+    punches.veggies_this_week(Date.today, timezone)
+  end
 end
